@@ -1,0 +1,19 @@
+python finetune.py \
+    --base_model 'decapoda-research/llama-13b-hf' \
+    --data_path 'yahma/alpaca-cleaned' \
+    --output_dir './lora-alpaca-13b-bf16' \
+    --batch_size 64 \
+    --micro_batch_size 64 \
+    --num_epochs 3 \
+    --learning_rate 2e-5 \
+    --cutoff_len 512 \
+    --val_set_size 2000 \
+    --save_steps 200 \
+    --eval_steps 200 \
+    --lora_r 8 \
+    --lora_alpha 16 \
+    --lora_dropout 0.05 \
+    --lora_target_modules '[q_proj,v_proj]' \
+    --train_on_inputs \
+    --group_by_length \
+    --bf16
